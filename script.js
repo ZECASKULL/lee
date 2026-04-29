@@ -146,10 +146,29 @@ function submitForm(data) {
     submitButton.textContent = 'ENVIANDO...';
     submitButton.disabled = true;
     
-    // Simulate API call
+    // Send email using EmailJS or similar service
+    // For now, we'll use a simple mailto link as fallback
+    const emailSubject = `Contato Skull BJJ - ${data.name}`;
+    const emailBody = `
+Nome: ${data.name}
+Email: ${data.email}
+Telefone: ${data.phone || 'Não informado'}
+Tipo de Aula: ${data['class-type']}
+Mensagem: ${data.message || 'Não informada'}
+
+---
+Enviado em: ${new Date().toLocaleString('pt-BR')}
+    `;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:jao10carlitus@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
     setTimeout(() => {
-        // Show success message
-        showNotification('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+        showNotification('Abrindo seu cliente de e-mail para enviar a mensagem...', 'success');
         
         // Reset form
         contactForm.reset();
@@ -158,9 +177,9 @@ function submitForm(data) {
         submitButton.textContent = originalText;
         submitButton.disabled = false;
         
-        // Log for debugging (in production, this would be sent to server)
-        console.log('Form data submitted:', data);
-    }, 2000);
+        // Log for debugging
+        console.log('Form data prepared for email:', data);
+    }, 1000);
 }
 
 function showNotification(message, type = 'info') {
@@ -464,3 +483,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // Console branding
 console.log('%c💀 SKULL BJJ 💀', 'font-size: 20px; color: #ff6b6b; font-weight: bold;');
 console.log('%cDomine a arte suave', 'font-size: 14px; color: #ccc;');
+
