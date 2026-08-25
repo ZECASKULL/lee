@@ -231,8 +231,8 @@ Este projeto está licenciado sob a licença MIT. Veja `LICENSE` para detalhes.
 ## 🆘 Suporte
 
 Para dúvidas ou suporte:
-- E-mail: contato@skullbjj.com.br
-- Telefone: (11) 9999-8888
+- E-mail: jao10carlitus@gmail.com
+- Telefone: (91) 99323-7646
 - Issues do GitHub
 
 ---
